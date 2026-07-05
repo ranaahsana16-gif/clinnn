@@ -7,7 +7,7 @@ import Services from './pages/Services';
 
 function App() {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <ScrollReveal />
       <div className="min-h-screen flex flex-col bg-background">
         <Header />

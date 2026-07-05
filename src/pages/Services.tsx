@@ -1,3 +1,4 @@
+import heroClinicImg from '../assets/hero-clinic-DQPnq-08.jpg';
 import { 
   Smile, Sparkles, ShieldCheck, HeartPulse, Stethoscope, 
   Gem, Check, Clock, ArrowRight 
@@ -169,7 +170,7 @@ export default function Services() {
           <div className="reveal animate-rise" style={{ transitionDelay: '0ms' }}>
             <div className="relative overflow-hidden rounded-[2rem] shadow-lux sm:rounded-[2.5rem]">
               <img 
-                src="/assets/hero-clinic-DQPnq-08.jpg" 
+                src={heroClinicImg} 
                 alt="Clinic interior design" 
                 loading="lazy" 
                 className="absolute inset-0 h-full w-full object-cover" 

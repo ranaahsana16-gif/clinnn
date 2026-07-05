@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import heroClinicImg from '../assets/hero-clinic-DQPnq-08.jpg';
+import smilePatientImg from '../assets/smile-patient-CQjEV75t.jpg';
+import dentistImg from '../assets/dentist-qrqZnThk.jpg';
+import equipmentImg from '../assets/equipment-G57BKPjR.jpg';
 import { 
   ArrowRight, Star, Smile, Sparkles, ShieldCheck, 
   HeartPulse, Stethoscope, Gem, Check, Phone, MapPin, Clock 
@@ -108,7 +112,7 @@ export default function Home() {
             <div className="relative animate-rise" style={{ animationDelay: '150ms' }}>
               <div className="absolute -inset-6 rounded-[2rem] bg-[var(--gradient-primary)] opacity-20 blur-2xl animate-float-slow"></div>
               <img 
-                src="/assets/hero-clinic-DQPnq-08.jpg" 
+                src={heroClinicImg} 
                 alt="Interior of Lumière Dental clinic" 
                 width="1600" 
                 height="1200" 
@@ -118,8 +122,8 @@ export default function Home() {
               {/* Floating Badge 1 (Loved by Patients) */}
               <div className="glass absolute -top-4 -left-3 flex items-center gap-3 rounded-2xl px-3 py-2.5 animate-float sm:-top-6 sm:-left-6 sm:px-4 sm:py-3">
                 <div className="flex -space-x-2">
-                  <img src="/assets/smile-patient-CQjEV75t.jpg" alt="" className="h-8 w-8 rounded-full border-2 border-white object-cover sm:h-9 sm:w-9" />
-                  <img src="/assets/dentist-qrqZnThk.jpg" alt="" className="h-8 w-8 rounded-full border-2 border-white object-cover sm:h-9 sm:w-9" />
+                  <img src={smilePatientImg} alt="" className="h-8 w-8 rounded-full border-2 border-white object-cover sm:h-9 sm:w-9" />
+                  <img src={dentistImg} alt="" className="h-8 w-8 rounded-full border-2 border-white object-cover sm:h-9 sm:w-9" />
                   <div className="grid h-8 w-8 place-items-center rounded-full border-2 border-white bg-teal text-[10px] font-semibold text-primary-foreground sm:h-9 sm:w-9">+9k</div>
                 </div>
                 <div>
@@ -261,7 +265,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-5 sm:px-6 lg:grid-cols-2 lg:gap-16">
           <div className="reveal relative" style={{ transitionDelay: '0ms' }}>
             <img 
-              src="/assets/dentist-qrqZnThk.jpg" 
+              src={dentistImg} 
               alt="Dr. Élise Moreau at Lumière Dental" 
               width="1024" 
               height="1280" 
@@ -269,7 +273,7 @@ export default function Home() {
               className="aspect-[4/5] w-full rounded-[2rem] object-cover shadow-lux"
             />
             <img 
-              src="/assets/equipment-G57BKPjR.jpg" 
+              src={equipmentImg} 
               alt="Modern dental equipment" 
               width="1280" 
               height="960" 
@@ -383,7 +387,7 @@ export default function Home() {
                   </p>
                   <div className="mt-8 flex items-center gap-4">
                     <img 
-                      src="/assets/smile-patient-CQjEV75t.jpg" 
+                      src={smilePatientImg} 
                       alt="Camille R." 
                       loading="lazy" 
                       className="h-12 w-12 rounded-full object-cover ring-2 ring-white/20" 
