@@ -1,29 +1,9 @@
-import React, { useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { Gem, Menu, X, ArrowRight } from 'lucide-react';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const location = useLocation();
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
-    // If it's a hash link
-    if (target.startsWith('#')) {
-      setMobileMenuOpen(false);
-      // If we are not on the homepage, go to homepage with hash
-      if (location.pathname !== '/') {
-        // Let React Router handle navigation first
-        return;
-      }
-      e.preventDefault();
-      const element = document.getElementById(target.substring(1));
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else {
-      setMobileMenuOpen(false);
-    }
-  };
 
   return (
     <header className="fixed top-3 left-1/2 z-50 w-[min(1180px,calc(100%-1.5rem))] -translate-x-1/2 sm:top-4">
@@ -43,7 +23,7 @@ export default function Header() {
         </NavLink>
 
         {/* Desktop Nav */}
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-6 md:flex">
           <NavLink 
             to="/" 
             className={({ isActive }) => 
@@ -60,31 +40,48 @@ export default function Header() {
           >
             Services
           </NavLink>
-          <a 
-            href={location.pathname === '/' ? '#about' : '/#about'}
-            onClick={(e) => handleNavClick(e, '#about')}
-            className="text-sm text-muted-foreground transition-colors hover:text-ink"
+          <NavLink 
+            to="/about" 
+            className={({ isActive }) => 
+              `text-sm transition-colors ${isActive ? 'text-ink font-medium' : 'text-muted-foreground hover:text-ink'}`
+            }
           >
             About
-          </a>
-          <a 
-            href={location.pathname === '/' ? '#contact' : '/#contact'}
-            onClick={(e) => handleNavClick(e, '#contact')}
-            className="text-sm text-muted-foreground transition-colors hover:text-ink"
+          </NavLink>
+          <NavLink 
+            to="/team" 
+            className={({ isActive }) => 
+              `text-sm transition-colors ${isActive ? 'text-ink font-medium' : 'text-muted-foreground hover:text-ink'}`
+            }
+          >
+            Team
+          </NavLink>
+          <NavLink 
+            to="/faqs" 
+            className={({ isActive }) => 
+              `text-sm transition-colors ${isActive ? 'text-ink font-medium' : 'text-muted-foreground hover:text-ink'}`
+            }
+          >
+            FAQs
+          </NavLink>
+          <NavLink 
+            to="/contact" 
+            className={({ isActive }) => 
+              `text-sm transition-colors ${isActive ? 'text-ink font-medium' : 'text-muted-foreground hover:text-ink'}`
+            }
           >
             Contact
-          </a>
+          </NavLink>
         </nav>
 
         {/* Book Button & Mobile Toggle */}
         <div className="flex items-center gap-2">
-          <a 
-            href={location.pathname === '/' ? '#contact' : '/#contact'}
-            onClick={(e) => handleNavClick(e, '#contact')}
+          <NavLink 
+            to="/contact" 
             className="btn-primary hidden rounded-full px-5 py-2.5 text-sm font-medium sm:inline-flex"
           >
             Book a visit
-          </a>
+          </NavLink>
           
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -125,30 +122,54 @@ export default function Header() {
             <span>Services</span>
             <ArrowRight className="h-4 w-4 opacity-45" />
           </NavLink>
-          <a 
-            href={location.pathname === '/' ? '#about' : '/#about'}
-            onClick={(e) => handleNavClick(e, '#about')}
-            className="text-base py-3 border-b border-border/50 text-muted-foreground transition-colors hover:text-ink flex items-center justify-between"
+          <NavLink 
+            to="/about" 
+            onClick={() => setMobileMenuOpen(false)}
+            className={({ isActive }) => 
+              `text-base py-3 border-b border-border/50 transition-colors flex items-center justify-between ${isActive ? 'text-ink font-medium' : 'text-muted-foreground hover:text-ink'}`
+            }
           >
             <span>About</span>
             <ArrowRight className="h-4 w-4 opacity-45" />
-          </a>
-          <a 
-            href={location.pathname === '/' ? '#contact' : '/#contact'}
-            onClick={(e) => handleNavClick(e, '#contact')}
-            className="text-base py-3 border-b border-border/50 text-muted-foreground transition-colors hover:text-ink flex items-center justify-between"
+          </NavLink>
+          <NavLink 
+            to="/team" 
+            onClick={() => setMobileMenuOpen(false)}
+            className={({ isActive }) => 
+              `text-base py-3 border-b border-border/50 transition-colors flex items-center justify-between ${isActive ? 'text-ink font-medium' : 'text-muted-foreground hover:text-ink'}`
+            }
+          >
+            <span>Team</span>
+            <ArrowRight className="h-4 w-4 opacity-45" />
+          </NavLink>
+          <NavLink 
+            to="/faqs" 
+            onClick={() => setMobileMenuOpen(false)}
+            className={({ isActive }) => 
+              `text-base py-3 border-b border-border/50 transition-colors flex items-center justify-between ${isActive ? 'text-ink font-medium' : 'text-muted-foreground hover:text-ink'}`
+            }
+          >
+            <span>FAQs</span>
+            <ArrowRight className="h-4 w-4 opacity-45" />
+          </NavLink>
+          <NavLink 
+            to="/contact" 
+            onClick={() => setMobileMenuOpen(false)}
+            className={({ isActive }) => 
+              `text-base py-3 border-b border-border/50 transition-colors flex items-center justify-between ${isActive ? 'text-ink font-medium' : 'text-muted-foreground hover:text-ink'}`
+            }
           >
             <span>Contact</span>
             <ArrowRight className="h-4 w-4 opacity-45" />
-          </a>
-          <a 
-            href={location.pathname === '/' ? '#contact' : '/#contact'}
-            onClick={(e) => handleNavClick(e, '#contact')}
+          </NavLink>
+          <NavLink 
+            to="/contact" 
+            onClick={() => setMobileMenuOpen(false)}
             className="btn-primary w-full rounded-full py-3 mt-2 text-center text-sm font-medium flex items-center justify-center gap-2"
           >
-            Book a visit
+            <span>Book a visit</span>
             <ArrowRight className="h-4 w-4" />
-          </a>
+          </NavLink>
         </nav>
       </div>
     </header>

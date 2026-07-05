@@ -1,22 +1,7 @@
-import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Gem } from 'lucide-react';
 
 export default function Footer() {
-  const location = useLocation();
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
-    if (target.startsWith('#')) {
-      if (location.pathname !== '/') {
-        return;
-      }
-      e.preventDefault();
-      const element = document.getElementById(target.substring(1));
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  };
 
   return (
     <footer className="border-t border-border/60 py-14 bg-background">
@@ -46,22 +31,14 @@ export default function Footer() {
               </NavLink>
             </li>
             <li>
-              <a 
-                className="text-sm text-muted-foreground transition-colors hover:text-ink" 
-                href={location.pathname === '/' ? '#about' : '/#about'}
-                onClick={(e) => handleNavClick(e, '#about')}
-              >
+              <NavLink className="text-sm text-muted-foreground transition-colors hover:text-ink" to="/team">
                 Team
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a 
-                className="text-sm text-muted-foreground transition-colors hover:text-ink" 
-                href={location.pathname === '/' ? '#about' : '/#about'}
-                onClick={(e) => handleNavClick(e, '#about')}
-              >
+              <NavLink className="text-sm text-muted-foreground transition-colors hover:text-ink" to="/about#technology">
                 Technology
-              </a>
+              </NavLink>
             </li>
             <li>
               <a className="text-sm text-muted-foreground transition-colors hover:text-ink" href="#">
@@ -76,13 +53,14 @@ export default function Footer() {
           <h4 className="text-xs font-semibold tracking-wider text-ink uppercase">Patients</h4>
           <ul className="mt-4 space-y-2">
             <li>
-              <a 
-                className="text-sm text-muted-foreground transition-colors hover:text-ink" 
-                href="#contact"
-                onClick={(e) => handleNavClick(e, '#contact')}
-              >
+              <NavLink className="text-sm text-muted-foreground transition-colors hover:text-ink" to="/contact">
                 Book online
-              </a>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="text-sm text-muted-foreground transition-colors hover:text-ink" to="/faqs">
+                FAQs
+              </NavLink>
             </li>
             <li>
               <a className="text-sm text-muted-foreground transition-colors hover:text-ink" href="#">
